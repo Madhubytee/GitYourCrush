@@ -79,13 +79,15 @@ const { useState, useEffect } = React;
 
 //main app component
 function App() {
-  //tate management
+  //state management
   const [flowerType, setFlowerType] = useState('rose');
   const [flowerColor, setFlowerColor] = useState('#f672b0');
   const [message, setMessage] = useState('hi crush!');
   const [isSharedView, setIsSharedView] = useState(false);
   const [extraFlowers, setExtraFlowers] = useState([]);
   const [seeds, setSeeds] = useState([1, 2, 3, 4, 5]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [activeTab, setActiveTab] = useState('preview'); //for mobile: 'config' or 'preview'
 
   //check if someone opened a shared link
   useEffect(() => {
@@ -103,9 +105,18 @@ function App() {
     }
   }, []);
 
+  //track viewport size to switch between mobile and desktop layouts
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   //plant new flower when someone clicks a seed
   const handlePlantSeed = (index) => {
-    if (extraFlowers.length >= 5) return; 
+    if (extraFlowers.length >= 5) return;
 
     setSeeds(seeds.filter((_, i) => i !== index));
 
@@ -180,6 +191,54 @@ function App() {
     );
   }
 
+  //mobile layout with tabs
+  if (isMobile) {
+    return (
+      <div className="app-container mobile-layout">
+        <div className="mobile-tabs">
+          <button
+            className={`tab-btn ${activeTab === 'preview' ? 'active' : ''}`}
+            onClick={() => setActiveTab('preview')}
+          >
+            Preview
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'config' ? 'active' : ''}`}
+            onClick={() => setActiveTab('config')}
+          >
+            Settings
+          </button>
+        </div>
+
+        <div className="mobile-content">
+          {activeTab === 'preview' ? (
+            <PreviewPanel
+              flowerType={flowerType}
+              flowerColor={flowerColor}
+              message={message}
+              extraFlowers={extraFlowers}
+              seeds={seeds}
+              onPlantSeed={handlePlantSeed}
+              onGenerateLink={() => {
+                return generateShareableLink(flowerType, flowerColor, message);
+              }}
+            />
+          ) : (
+            <ConfigPanel
+              flowerType={flowerType}
+              setFlowerType={setFlowerType}
+              flowerColor={flowerColor}
+              setFlowerColor={setFlowerColor}
+              message={message}
+              setMessage={setMessage}
+            />
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  //desktop layout
   return (
     <div className="app-container">
       <div className="editing-mode">
