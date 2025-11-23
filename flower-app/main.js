@@ -1,5 +1,4 @@
 /* ---------------utility functions------------------*/
-
 //makees the color lighter for the flower petals
 function lightenColor(hex, percent) {
   const num = parseInt(hex.replace('#', ''), 16);
