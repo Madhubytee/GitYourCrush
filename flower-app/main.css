@@ -370,7 +370,7 @@ body {
 
 .copy-btn {
   padding: 10px 20px;
-  background: #4caf50;
+  background: #9c27b0;
   color: white;
   border: none;
   border-radius: 8px;
@@ -380,7 +380,7 @@ body {
 }
 
 .copy-btn:hover {
-  background: #45a049;
+  background: #7b1fa2;
 }
 
 .close-modal {

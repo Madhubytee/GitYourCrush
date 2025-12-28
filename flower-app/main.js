@@ -527,7 +527,7 @@ function PreviewPanel({
                 onClick={(e) => e.target.select()}
               />
               <button className="copy-btn" onClick={copyToClipboard}>
-                {copied ? '✓ Copied!' : '📋 Copy'}
+                {copied ? 'Copied!' : 'Copy'}
               </button>
             </div>
             <button
