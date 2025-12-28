@@ -82,7 +82,7 @@ function App() {
   //state management
   const [flowerType, setFlowerType] = useState('rose');
   const [flowerColor, setFlowerColor] = useState('#f672b0');
-  const [message, setMessage] = useState('hi crush!');
+  const [message, setMessage] = useState('hi!');
   const [isSharedView, setIsSharedView] = useState(false);
   const [extraFlowers, setExtraFlowers] = useState([]);
   const [seeds, setSeeds] = useState([1, 2, 3, 4, 5]);
@@ -275,7 +275,7 @@ function ConfigPanel({
 }) {
   return (
     <div className="config-panel">
-      <h1 style={{fontFamily: 'FlowerLabel, sans-serif'}}><img src="img/Logo.png" alt="Logo" style={{width: '24px', height: '24px', borderRadius: '50%', verticalAlign: 'middle', marginRight: '8px'}} /> Git Your Crush</h1>
+      <h1 style={{fontFamily: 'FlowerLabel, sans-serif'}}><img src="img/Logo.png" alt="Logo" style={{width: '24px', height: '24px', borderRadius: '50%', verticalAlign: 'middle', marginRight: '8px'}} /> GitFlowers</h1>
 
       {/*Flower Type Selector*/}
       <div className="flower-type-selector">
@@ -345,7 +345,7 @@ function ConfigPanel({
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="hi crush!"
+            placeholder="hi!"
             maxLength={100}
             className="message-textarea"
           />

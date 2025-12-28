@@ -1,9 +1,9 @@
-# Git Your Crush 
+# GitFlowers
 (Get your crushhh!)
 A web application for creating and sharing customizable animated flowers with personalized messages.
 
 ## Overview
-Git Your Crush is a lightweight web tool that allows users to create shareable links containing animated flowers with custom messages. The application generates unique URLs that encode the flower configuration, enabling recipients to view fullscreen animated floral displays.
+GitFlowers is a lightweight web tool that allows users to create shareable links containing animated flowers with custom messages. The application generates unique URLs that encode the flower configuration, enabling recipients to view fullscreen animated floral displays.
 
 ## Features
 
